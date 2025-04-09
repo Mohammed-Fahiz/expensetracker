@@ -1,5 +1,5 @@
 import 'package:expensetracker/features/auth/screens/splash_screen.dart';
-import 'package:expensetracker/features/categories/screens/addCategory_screen.dart';
+import 'package:expensetracker/features/categories/screens/listCategory_screen.dart';
 import 'package:expensetracker/features/home/screens/homeBottonNav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +18,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/add-category',
-      builder: (context, state) => const AddCategoryScreen(),
+      builder: (context, state) => const ListCategoryScreen(),
     ),
   ],
 );

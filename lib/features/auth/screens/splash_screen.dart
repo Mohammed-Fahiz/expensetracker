@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/custom_widgets/loader.dart';
 import 'package:expensetracker/features/home/screens/homeBottonNav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,9 +22,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
+      body: Loader(),
     );
   }
 

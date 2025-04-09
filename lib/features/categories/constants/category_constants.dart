@@ -18,8 +18,4 @@ class CategoryConstants {
     Colors.grey,
     Colors.blueGrey,
   ];
-
-
-
-  List<IconData> categoryIcons 
 }
