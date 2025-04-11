@@ -46,7 +46,6 @@ android {
     buildTypes {
        release {
             signingConfig signingConfigs.debug
-            // Add a task to change the app name dynamically
             applicationVariants.all { variant ->
                 if (variant.buildType.name == "release") {
                     variant.outputs.all { output ->
