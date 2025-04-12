@@ -13,6 +13,12 @@ class AppThemes {
     brightness: Brightness.light,
     primaryColor: mediumPurple,
     scaffoldBackgroundColor: lightBackground,
+    // Add colorScheme to define surface (Container) color
+    colorScheme: const ColorScheme.light(
+      primary: mediumPurple,
+      surface: lightSurface, // Default Container color
+      onSurface: Colors.black87,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: mediumPurple,
       foregroundColor: Colors.white,
@@ -52,7 +58,12 @@ class AppThemes {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: darkestBlue,
-    scaffoldBackgroundColor: darkestBlue,
+    // Add colorScheme to define surface (Container) color
+    colorScheme: const ColorScheme.dark(
+      primary: mediumPurple,
+      surface: darkGray,
+      onSurface: Colors.white70,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: darkGray,
       foregroundColor: Colors.white,

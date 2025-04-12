@@ -1,10 +1,9 @@
 import 'package:expensetracker/features/auth/screens/splash_screen.dart';
 import 'package:expensetracker/features/categories/screens/listCategory_screen.dart';
 import 'package:expensetracker/features/home/screens/homeBottonNav_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:expensetracker/features/lend-borrow/screens/lendBorrow_screen.dart';
 import 'package:go_router/go_router.dart';
 
-// Define routes with paths matching bottom navigation indexes
 final GoRouter router = GoRouter(
   initialLocation: '/splash',
   routes: [
@@ -12,13 +11,18 @@ final GoRouter router = GoRouter(
       path: '/splash',
       builder: (context, state) => const SplashScreen(),
     ),
-    GoRoute(
-      path: '/home',
-      builder: (context, state) => const HomeBottomNavScreen(),
-    ),
-    GoRoute(
-      path: '/add-category',
-      builder: (context, state) => const ListCategoryScreen(),
+    ShellRoute(
+      builder: (context, state, child) => HomeBottomNavScreen(child: child),
+      routes: [
+        GoRoute(
+          path: '/lend-borrow',
+          builder: (context, state) => const LendBorrowScreen(),
+        ),
+        GoRoute(
+          path: '/add-category',
+          builder: (context, state) => const ListCategoryScreen(),
+        ),
+      ],
     ),
   ],
 );

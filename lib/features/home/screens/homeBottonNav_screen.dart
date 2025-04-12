@@ -1,5 +1,4 @@
 import 'package:expensetracker/core/theme/theme.dart';
-import 'package:expensetracker/features/categories/screens/listCategory_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -8,26 +7,23 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeBottomNavScreen extends ConsumerWidget {
-  static const routeName = "/home";
-  const HomeBottomNavScreen({super.key});
+  final Widget child;
+
+  const HomeBottomNavScreen({super.key, required this.child});
 
   static final List<String> _tabs = [
+    '/lend-borrow',
     '/add-category',
   ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String currentLocation = GoRouterState.of(context).uri.toString();
+    final String location = GoRouterState.of(context).uri.toString();
     final int currentIndex =
-        _tabs.indexWhere((path) => currentLocation.startsWith(path));
+        _tabs.indexWhere((path) => location.startsWith(path));
 
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex == -1 ? 0 : currentIndex,
-        children: const [
-          ListCategoryScreen(),
-        ],
-      ),
+      body: child, // Use the router's child here
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
           left: 0.02.sw,
@@ -60,13 +56,13 @@ class HomeBottomNavScreen extends ConsumerWidget {
             textStyle: const TextStyle(color: AppThemes.lightSurface),
             iconSize: 0.065.sw,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            selectedIndex: currentIndex == -1 ? 0 : currentIndex,
+            selectedIndex: currentIndex < 0 ? 0 : currentIndex,
             onTabChange: (index) {
-              context.go(_tabs[index]); // Navigate using GoRouter
+              context.go(_tabs[index]);
             },
             tabs: const [
-              GButton(icon: LineIcons.list, text: 'Categories'),
               GButton(icon: LineIcons.creditCard, text: 'Lend/Borrow'),
+              GButton(icon: LineIcons.list, text: 'Categories'),
             ],
           ),
         ),
