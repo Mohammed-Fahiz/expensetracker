@@ -65,10 +65,8 @@ class HomeBottomNavScreen extends ConsumerWidget {
               context.go(_tabs[index]); // Navigate using GoRouter
             },
             tabs: const [
-              GButton(icon: LineIcons.home, text: 'Home'),
-              GButton(icon: LineIcons.heart, text: 'Likes'),
-              GButton(icon: LineIcons.search, text: 'Search'),
-              GButton(icon: LineIcons.user, text: 'Profile'),
+              GButton(icon: LineIcons.list, text: 'Categories'),
+              GButton(icon: LineIcons.creditCard, text: 'Lend/Borrow'),
             ],
           ),
         ),
