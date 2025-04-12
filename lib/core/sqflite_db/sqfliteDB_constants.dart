@@ -1,3 +1,4 @@
 class SqfliteTableNames {
-  static String categoryTable = 'categoryTable';
+  static String categoryMaster = 'categoryMaster';
+  static String iconMaster = 'iconMaster';
 }

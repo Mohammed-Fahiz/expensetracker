@@ -1,41 +1,85 @@
 import 'package:expensetracker/models/icon_models/iconData_model.dart';
-import 'package:expensetracker/models/icon_models/iconPick_model.dart';
 import 'package:line_icons/line_icons.dart';
 
 class IconDataContants {
-  static List<IconPickModel> iconPickList = [
-    IconPickModel(
-      category: 'Entertainment',
-      icons: [
-        IconDataModel(name: 'Movie', icon: LineIcons.film),
-        IconDataModel(name: 'TV', icon: LineIcons.television),
-        IconDataModel(name: 'Music', icon: LineIcons.music),
-        IconDataModel(name: 'Game', icon: LineIcons.gamepad),
-      ],
+  static List<IconDataModel> iconPickList = [
+    IconDataModel(
+      name: 'Movie',
+      iconCodePoint: LineIcons.film.codePoint,
+      iconFontFamily: LineIcons.film.fontFamily!,
+      iconCategory: 'Entertainment',
     ),
-    IconPickModel(
-      category: 'Food & Drink',
-      icons: [
-        IconDataModel(name: 'Food', icon: LineIcons.utensils),
-        IconDataModel(name: 'Coffee', icon: LineIcons.coffee),
-        IconDataModel(name: 'Beer', icon: LineIcons.beer),
-      ],
+    IconDataModel(
+      name: 'TV',
+      iconCodePoint: LineIcons.television.codePoint,
+      iconFontFamily: LineIcons.television.fontFamily!,
+      iconCategory: 'Entertainment',
     ),
-    IconPickModel(
-      category: 'Shopping',
-      icons: [
-        IconDataModel(name: 'Shopping', icon: LineIcons.shoppingBag),
-        IconDataModel(name: 'Shopping2', icon: LineIcons.shoppingCart),
-        IconDataModel(name: 'Gift', icon: LineIcons.gift),
-      ],
+    IconDataModel(
+      name: 'Music',
+      iconCodePoint: LineIcons.music.codePoint,
+      iconFontFamily: LineIcons.music.fontFamily!,
+      iconCategory: 'Entertainment',
     ),
-    IconPickModel(
-      category: 'Travel',
-      icons: [
-        IconDataModel(name: 'Plane', icon: LineIcons.plane),
-        IconDataModel(name: 'Hotel', icon: LineIcons.hotel),
-        IconDataModel(name: 'Map', icon: LineIcons.mapMarked),
-      ],
+    IconDataModel(
+      name: 'Game',
+      iconCodePoint: LineIcons.gamepad.codePoint,
+      iconFontFamily: LineIcons.gamepad.fontFamily!,
+      iconCategory: 'Entertainment',
+    ),
+    IconDataModel(
+      name: 'Food',
+      iconCodePoint: LineIcons.utensils.codePoint,
+      iconFontFamily: LineIcons.utensils.fontFamily!,
+      iconCategory: 'Food',
+    ),
+    IconDataModel(
+      name: 'Coffee',
+      iconCodePoint: LineIcons.coffee.codePoint,
+      iconFontFamily: LineIcons.coffee.fontFamily!,
+      iconCategory: 'Food',
+    ),
+    IconDataModel(
+      name: 'Beer',
+      iconCodePoint: LineIcons.beer.codePoint,
+      iconFontFamily: LineIcons.beer.fontFamily!,
+      iconCategory: 'Food',
+    ),
+    IconDataModel(
+      name: 'Shopping',
+      iconCodePoint: LineIcons.shoppingBag.codePoint,
+      iconFontFamily: LineIcons.shoppingBag.fontFamily!,
+      iconCategory: 'Shopping',
+    ),
+    IconDataModel(
+      name: 'Shopping2',
+      iconCodePoint: LineIcons.shoppingCart.codePoint,
+      iconFontFamily: LineIcons.shoppingCart.fontFamily!,
+      iconCategory: 'Shopping',
+    ),
+    IconDataModel(
+      name: 'Gift',
+      iconCodePoint: LineIcons.gift.codePoint,
+      iconFontFamily: LineIcons.gift.fontFamily!,
+      iconCategory: 'Shopping',
+    ),
+    IconDataModel(
+      name: 'Plane',
+      iconCodePoint: LineIcons.plane.codePoint,
+      iconFontFamily: LineIcons.plane.fontFamily!,
+      iconCategory: 'Travel',
+    ),
+    IconDataModel(
+      name: 'Hotel',
+      iconCodePoint: LineIcons.hotel.codePoint,
+      iconFontFamily: LineIcons.hotel.fontFamily!,
+      iconCategory: 'Travel',
+    ),
+    IconDataModel(
+      name: 'Map',
+      iconCodePoint: LineIcons.mapMarked.codePoint,
+      iconFontFamily: LineIcons.mapMarked.fontFamily!,
+      iconCategory: 'Travel',
     ),
   ];
 }

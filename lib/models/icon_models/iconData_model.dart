@@ -5,34 +5,53 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class IconDataModel {
+  final int? id;
+  final String iconCategory;
   final String name;
-  final IconData icon;
+  final int iconCodePoint;
+  final String iconFontFamily;
+
   IconDataModel({
+    this.id,
+    required this.iconCategory,
     required this.name,
-    required this.icon,
+    required this.iconCodePoint,
+    required this.iconFontFamily,
   });
 
   IconDataModel copyWith({
+    int? id,
+    String? iconCategory,
     String? name,
-    IconData? icon,
+    int? iconCodePoint,
+    String? iconFontFamily,
   }) {
     return IconDataModel(
+      id: id ?? this.id,
+      iconCategory: iconCategory ?? this.iconCategory,
       name: name ?? this.name,
-      icon: icon ?? this.icon,
+      iconCodePoint: iconCodePoint ?? this.iconCodePoint,
+      iconFontFamily: iconFontFamily ?? this.iconFontFamily,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
+      'iconCategory': iconCategory,
       'name': name,
-      'icon': icon.codePoint,
+      'iconCodePoint': iconCodePoint,
+      'iconFontFamily': iconFontFamily,
     };
   }
 
   factory IconDataModel.fromMap(Map<String, dynamic> map) {
     return IconDataModel(
+      id: map['id'] != null ? map['id'] as int : null,
+      iconCategory: map['iconCategory'] as String,
       name: map['name'] as String,
-      icon: IconData(map['icon'] as int, fontFamily: 'MaterialIcons'),
+      iconCodePoint: map['iconCodePoint'] as int,
+      iconFontFamily: map['iconFontFamily'] as String,
     );
   }
 
@@ -42,15 +61,27 @@ class IconDataModel {
       IconDataModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'IconDataModel(name: $name, icon: $icon)';
+  String toString() {
+    return 'IconDataModel(id: $id, iconCategory: $iconCategory, name: $name, iconCodePoint: $iconCodePoint, iconFontFamily: $iconFontFamily)';
+  }
 
   @override
   bool operator ==(covariant IconDataModel other) {
     if (identical(this, other)) return true;
 
-    return other.name == name && other.icon == icon;
+    return other.id == id &&
+        other.iconCategory == iconCategory &&
+        other.name == name &&
+        other.iconCodePoint == iconCodePoint &&
+        other.iconFontFamily == iconFontFamily;
   }
 
   @override
-  int get hashCode => name.hashCode ^ icon.hashCode;
+  int get hashCode {
+    return id.hashCode ^
+        iconCategory.hashCode ^
+        name.hashCode ^
+        iconCodePoint.hashCode ^
+        iconFontFamily.hashCode;
+  }
 }

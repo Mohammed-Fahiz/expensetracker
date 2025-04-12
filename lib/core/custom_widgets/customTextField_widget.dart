@@ -4,12 +4,14 @@ class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final String? hintText;
+  final Function(String)? onChanged;
 
   const CustomTextFieldWidget({
     super.key,
     required this.controller,
     required this.labelText,
     this.hintText,
+    this.onChanged,
   });
 
   @override
@@ -23,6 +25,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         hintText: hintText ?? 'Enter text',
       ),
       style: theme.textTheme.bodyMedium,
+      onChanged: onChanged,
     );
   }
 }

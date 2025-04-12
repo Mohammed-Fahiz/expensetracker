@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:typed_data';
 
 class CategoryModel {
   final int? id;
   final String categoryName;
-  final String iconCodePoint;
-  final String iconFamily;
+  final int? iconId;
   final String createdTime;
   final String updatedTime;
   final int priority;
@@ -13,8 +13,7 @@ class CategoryModel {
   CategoryModel({
     this.id,
     required this.categoryName,
-    required this.iconCodePoint,
-    required this.iconFamily,
+    this.iconId,
     required this.createdTime,
     required this.updatedTime,
     required this.priority,
@@ -24,8 +23,7 @@ class CategoryModel {
   CategoryModel copyWith({
     int? id,
     String? categoryName,
-    String? iconCodePoint,
-    String? iconFamily,
+    int? iconId,
     String? createdTime,
     String? updatedTime,
     int? priority,
@@ -34,8 +32,7 @@ class CategoryModel {
     return CategoryModel(
       id: id ?? this.id,
       categoryName: categoryName ?? this.categoryName,
-      iconCodePoint: iconCodePoint ?? this.iconCodePoint,
-      iconFamily: iconFamily ?? this.iconFamily,
+      iconId: iconId ?? this.iconId,
       createdTime: createdTime ?? this.createdTime,
       updatedTime: updatedTime ?? this.updatedTime,
       priority: priority ?? this.priority,
@@ -47,8 +44,7 @@ class CategoryModel {
     return <String, dynamic>{
       'id': id,
       'categoryName': categoryName,
-      'iconCodePoint': iconCodePoint,
-      'iconFamily': iconFamily,
+      'iconId': iconId,
       'createdTime': createdTime,
       'updatedTime': updatedTime,
       'priority': priority,
@@ -60,8 +56,7 @@ class CategoryModel {
     return CategoryModel(
       id: map['id'] != null ? map['id'] as int : null,
       categoryName: map['categoryName'] as String,
-      iconCodePoint: map['iconCodePoint'] as String,
-      iconFamily: map['iconFamily'] as String,
+      iconId: map['iconId'] != null ? map['iconId'] as int : null,
       createdTime: map['createdTime'] as String,
       updatedTime: map['updatedTime'] as String,
       priority: map['priority'] as int,
@@ -75,8 +70,7 @@ class CategoryModel {
 
     return other.id == id &&
         other.categoryName == categoryName &&
-        other.iconCodePoint == iconCodePoint &&
-        other.iconFamily == iconFamily &&
+        other.iconId == iconId &&
         other.createdTime == createdTime &&
         other.updatedTime == updatedTime &&
         other.priority == priority &&
@@ -87,8 +81,7 @@ class CategoryModel {
   int get hashCode {
     return id.hashCode ^
         categoryName.hashCode ^
-        iconCodePoint.hashCode ^
-        iconFamily.hashCode ^
+        iconId.hashCode ^
         createdTime.hashCode ^
         updatedTime.hashCode ^
         priority.hashCode ^
@@ -102,6 +95,6 @@ class CategoryModel {
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, categoryName: $categoryName, iconCodePoint: $iconCodePoint, iconFamily: $iconFamily, createdTime: $createdTime, updatedTime: $updatedTime, priority: $priority, isActive: $isActive)';
+    return 'CategoryModel(id: $id, categoryName: $categoryName, iconId: $iconId, createdTime: $createdTime, updatedTime: $updatedTime, priority: $priority, isActive: $isActive)';
   }
 }
