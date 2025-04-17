@@ -6,6 +6,7 @@ class ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(errorText.toString());
     return Center(
       child: Text(
         errorText.toString(),

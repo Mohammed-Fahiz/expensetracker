@@ -12,7 +12,7 @@ class HomeBottomNavScreen extends ConsumerWidget {
   const HomeBottomNavScreen({super.key, required this.child});
 
   static final List<String> _tabs = [
-    '/lend-borrow',
+    '/personList',
     '/add-category',
   ];
 

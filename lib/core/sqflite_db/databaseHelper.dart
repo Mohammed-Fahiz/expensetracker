@@ -27,19 +27,23 @@ class DatabaseHelper {
   }
 
   Future<void> _createTables(Database db) async {
-    await db.execute('''
-    CREATE TABLE ${SqfliteTableNames.categoryMaster} (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      categoryName TEXT NOT NULL,
-      iconId INTEGER,
-      createdTime TEXT NOT NULL,
-      updatedTime TEXT NOT NULL,
-      priority INTEGER NOT NULL,
-      isActive INTEGER NOT NULL
-    )
-  ''');
-
+    await createAndInsertIntoCategoryMaster(db);
     await createAndInsertIntoIconMaster(db);
+    await createPersonMaster(db);
+  }
+
+  Future<void> createAndInsertIntoCategoryMaster(Database db) async {
+    await db.execute('''
+      CREATE TABLE ${SqfliteTableNames.categoryMaster} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        categoryName TEXT NOT NULL,
+        iconId INTEGER,
+        createdTime TEXT NOT NULL,
+        updatedTime TEXT NOT NULL,
+        priority INTEGER NOT NULL,
+        isActive INTEGER NOT NULL
+      )
+    ''');
   }
 
   Future<void> createAndInsertIntoIconMaster(Database db) async {
@@ -61,5 +65,34 @@ class DatabaseHelper {
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     }
+  }
+
+  Future<void> createPersonMaster(Database db) async {
+    await db.execute('''
+      CREATE TABLE ${SqfliteTableNames.personMaster} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        notes TEXT NOT NULL,
+        createdTime TEXT NOT NULL,
+        updatedTime TEXT NOT NULL,
+        isActive INTEGER NOT NULL
+      )
+    ''');
+  }
+
+  Future<void> createBorrowLendMaster(Database db) async {
+    await db.execute('''
+      CREATE TABLE ${SqfliteTableNames.borrowLendMaster} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        personId INTEGER NOT NULL,
+        amount REAL NOT NULL,
+        note TEXT NOT NULL,
+        type INTEGER NOT NULL,
+        tag TEXT NOT NULL,
+        createdTime TEXT NOT NULL,
+        updatedTime TEXT NOT NULL,
+        FOREIGN KEY (personId) REFERENCES ${SqfliteTableNames.personMaster}(id) ON DELETE CASCADE
+      )
+    ''');
   }
 }

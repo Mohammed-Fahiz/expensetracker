@@ -30,7 +30,7 @@ class TotalLendBorrowCardWidget extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Lended Amount",
+              title,
               style: TextStyle(
                 fontSize: 0.015.sh,
                 fontWeight: FontWeight.w600,
@@ -38,7 +38,7 @@ class TotalLendBorrowCardWidget extends ConsumerWidget {
             ),
             SizedBox(height: 0.005.sh),
             Text(
-              "0.00",
+              "5000",
               style: TextStyle(
                 fontSize: 0.035.sh,
                 fontWeight: FontWeight.bold,

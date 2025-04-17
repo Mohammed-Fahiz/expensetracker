@@ -2,6 +2,7 @@ import 'package:expensetracker/features/auth/screens/splash_screen.dart';
 import 'package:expensetracker/features/categories/screens/listCategory_screen.dart';
 import 'package:expensetracker/features/home/screens/homeBottonNav_screen.dart';
 import 'package:expensetracker/features/lend-borrow/screens/lendBorrow_screen.dart';
+import 'package:expensetracker/features/persons/screens/personList_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -15,14 +16,18 @@ final GoRouter router = GoRouter(
       builder: (context, state, child) => HomeBottomNavScreen(child: child),
       routes: [
         GoRoute(
-          path: '/lend-borrow',
-          builder: (context, state) => const LendBorrowScreen(),
+          path: '/personList',
+          builder: (context, state) => const PersonListScreen(),
         ),
         GoRoute(
           path: '/add-category',
           builder: (context, state) => const ListCategoryScreen(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/lend-borrow',
+      builder: (context, state) => const LendBorrowScreen(),
     ),
   ],
 );

@@ -44,7 +44,6 @@ class _CustomButtonState extends State<CustomButton> {
 
   @override
   Widget build(BuildContext context) {
-    print(isLoading);
     return ElevatedButton(
       onPressed: handlePress,
       style: ElevatedButton.styleFrom(

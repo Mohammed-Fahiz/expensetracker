@@ -1,10 +1,13 @@
 import 'package:expensetracker/core/custom_widgets/customButton_widget.dart';
 import 'package:expensetracker/core/custom_widgets/customTextField_widget.dart';
+import 'package:expensetracker/features/lend-borrow/models/borrowLend_model.dart';
+import 'package:expensetracker/features/lend-borrow/widgets/addEditLendBorrow_sheet.dart';
 import 'package:expensetracker/features/lend-borrow/widgets/customTab_card.dart';
 import 'package:expensetracker/features/lend-borrow/widgets/totalLendBorrow_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_icons/line_icons.dart';
 
 class LendBorrowScreen extends ConsumerStatefulWidget {
   static const routeName = "/lend-borrow";
@@ -37,7 +40,7 @@ class _LendBorrowScreenState extends ConsumerState<LendBorrowScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 0.18.sh,
+                height: 0.16.sh,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -45,7 +48,7 @@ class _LendBorrowScreenState extends ConsumerState<LendBorrowScreen> {
                 ),
                 padding: EdgeInsets.all(0.01.sh),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,37 +66,23 @@ class _LendBorrowScreenState extends ConsumerState<LendBorrowScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Container(
-                          height: 0.05.sh,
-                          width: 0.3.sw,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(0),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 0.001.sh,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Add",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(width: 0.01.sw),
-                              Icon(
-                                Icons.add_circle,
-                                size: 0.03.sh,
-                              ),
-                            ],
-                          ),
-                        )
+                        const CustomTabCardWidget(
+                          title: "Timeline",
+                          icon: LineIcons.clock,
+                        ),
+                        SizedBox(width: 0.02.sw),
+                        CustomTabCardWidget(
+                          onTap: () async {
+                            await addEditLendBorrowSheet(
+                              context: context,
+                              borrowLendModel: null,
+                            );
+                          },
+                          title: "Add",
+                          icon: LineIcons.plusCircle,
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -323,6 +312,21 @@ class _LendBorrowScreenState extends ConsumerState<LendBorrowScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> addEditLendBorrowSheet({
+    required BuildContext context,
+    required BorrowLendModel? borrowLendModel,
+  }) async {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return AddEditBorrowAndLendSheet(
+          borrowLendModel: borrowLendModel,
+        );
+      },
     );
   }
 }

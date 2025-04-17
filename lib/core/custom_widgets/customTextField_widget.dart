@@ -20,6 +20,14 @@ class CustomTextFieldWidget extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(0),
+          borderSide: BorderSide(
+            color: theme.colorScheme.primary,
+            width: 1.5,
+          ),
+        ),
+        fillColor: Colors.white,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: labelText,
         hintText: hintText ?? 'Enter text',

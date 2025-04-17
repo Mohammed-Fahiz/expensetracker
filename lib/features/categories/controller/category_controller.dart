@@ -40,7 +40,7 @@ class CategoryController extends Notifier<bool> {
       (r) {
         context.pop();
         showSnackBar(
-          content: "Category added successfully",
+          content: "${category.categoryName} added successfully",
           context: context,
           color: Colors.green,
         );
@@ -70,7 +70,7 @@ class CategoryController extends Notifier<bool> {
       (r) {
         context.pop();
         showSnackBar(
-          content: "Category updated successfully",
+          content: "${category.categoryName} updated successfully",
           context: context,
           color: Colors.green,
         );
